@@ -1,0 +1,22 @@
+-- linea_de_investigacion
+INSERT INTO linea_de_investigacion (id_linea, linea_investigacion, descripcion) VALUES
+(1, 'Energías renovables', 'Estudio y desarrollo de soluciones basadas en fuentes limpias y sostenibles.'),
+(2, 'Eficiencia energética', 'Optimización del uso de la energía y reducción del impacto ambiental.'),
+(3, 'Automatización y robótica', 'Implementación de sistemas automatizados para mejorar procesos industriales.'),
+(4, 'Diseño y manufactura', 'Innovación en el diseño y la fabricación de productos avanzados.'),
+(5, 'Software y TIC', 'Creación y mejora de soluciones digitales para diferentes sectores.'),
+(6, 'IA y machine learning', 'Aplicación de algoritmos inteligentes para resolver problemas complejos.'),
+(7, 'Ciberseguridad', 'Desarrollo de herramientas y prácticas para garantizar la seguridad digital.'),
+(8, 'Electrónica aplicada', 'Diseño y aplicación de sistemas electrónicos en dispositivos específicos.'),
+(9, 'Telecomunicaciones', 'Investigación en tecnologías de comunicación y transmisión de datos.'),
+(10, 'Ingeniería ambiental', 'Soluciones para proteger el medio ambiente y manejar residuos de forma eficiente.'),
+(11, 'Producción y logística', 'Optimización de cadenas de suministro y procesos de producción.'),
+(12, 'Gestión empresarial', 'Mejoras en la gestión y administración de empresas e instituciones.'),
+(13, 'Emprendimiento', 'Desarrollo de ideas innovadoras y estrategias de mercado.'),
+(14, 'Economía circular', 'Promoción de modelos sostenibles que reduzcan el desperdicio y mejoren el impacto social.'),
+(15, 'Diseño e innovación', 'Creación de productos novedosos adaptados a las necesidades del mercado.'),
+(16, 'Mantenimiento aero.', 'Investigación en mantenimiento de aeronaves y optimización energética.'),
+(17, 'Educación y aprendizaje', 'Aplicación de herramientas y metodologías para mejorar los procesos educativos.'),
+(18, 'Optimización ind.', 'Análisis y mejora de procesos para incrementar la eficiencia en la industria.'),
+(19, 'Transformación digital', 'Uso de tecnologías digitales y análisis avanzado para la toma de decisiones.'),
+(20, 'Ciencias aplicadas', 'Aplicación práctica del conocimiento científico para generar innovación tecnológica.');
