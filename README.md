@@ -5,3 +5,4 @@ Repositorio académico correspondiente a los cursos ET0187 - Bases de Datos 1 y 
 - Valentina Alejandra Pérez Cardona
 - Juan Felipe Raigoza Cifuentes
 - Juan David Garcia Jimenez
+- Diego Alejandro Mazo Espinal
