@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+/* Estilo bento para las tarjetas */
+.bento-card {
+    @apply rounded-2xl p-6 shadow-sm transition-all duration-300;
+    @apply hover:shadow-md hover:-translate-y-1;
+    @apply flex flex-col justify-between;
+    min-height: 180px;
+}
+
+/* Efecto hover para acciones rápidas */
+.quick-action:hover {
+    @apply transform scale-[1.02];
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bento-card {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Retrasos para la animación en cascada */
+.bento-card:nth-child(1) { animation-delay: 0.1s; }
+.bento-card:nth-child(2) { animation-delay: 0.2s; }
+.bento-card:nth-child(3) { animation-delay: 0.3s; }
+.bento-card:nth-child(4) { animation-delay: 0.4s; }
+.bento-card:nth-child(5) { animation-delay: 0.5s; }
+.bento-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Estilos para errores de validación */
+.input-error {
+    @apply mt-1 text-sm text-red-600;
+}
+
+.input-error-border {
+    @apply border-red-500 focus:border-red-500 focus:ring-red-500;
+}
