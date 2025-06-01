@@ -9,6 +9,9 @@ Repositorio académico correspondiente a los cursos ET0187 - Bases de Datos 1 y 
 - Juan Felipe Raigoza Cifuentes
 - Juan David Garcia Jimenez
 - Diego Alejandro Mazo Espinal
+- Breinner Silva Velosa
+- Javier Isaza Vasquez
+- Andrés García Aguirre
 
 # Equipo de Desarrollo Web
 - Angelo Alexander Arango Graciano
