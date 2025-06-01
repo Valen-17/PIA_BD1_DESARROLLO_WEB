@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+{{-- Cambios de diseño --}}
+
 @section('title', 'Crear Evaluación')
 
 @section('content')
