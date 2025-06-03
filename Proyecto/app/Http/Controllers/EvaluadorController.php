@@ -33,12 +33,17 @@ class EvaluadorController extends Controller
             'especialidad' => 'nullable|string|max:100',
         ]);
 
-      Evaluador::create($request->all());
+         Evaluador::create([
+            'usuario_id' => $usuario->id,
+            'identificacion' => 'TEMP-' . $usuario->id, // temporal
+            'nombres' => $input['username'],
+            'apellidos' => '',
+            'email' => $usuario->email,
+        ]);
 
         return redirect()->route('evaluadores.index')
                          ->with('success', 'Evaluador creado correctamente');
     }
-
 
     public function show(Evaluador $evaluador)
     {

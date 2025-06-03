@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 
 class Usuario extends Authenticatable
@@ -21,32 +21,21 @@ class Usuario extends Authenticatable
 
     protected $hidden = [
         'password',
-        'remember_token', // Cambiar de 'rememberToken' a 'remember_token'
+        'remember_token',
     ];
 
     protected $casts = [
-        'email_verified_at' => 'datetime', // Cambiar de 'emailVerifiedAt'
+        'email_verified_at' => 'datetime',
         'activo' => 'boolean'
     ];
 
-    // Relaciones
-    public function roles()
+    public function evaluador()
     {
-        return $this->belongsToMany(Rol::class, 'usuarioRoles', 'usuarioId', 'rolId')
-                    ->withPivot('fechaAsignacion')
-                    ->withTimestamps();
+        return $this->hasOne(Evaluador::class, 'usuario_id');
     }
 
-    // Métodos de autorización
-    public function hasRole($roleName)
-    {
-        return $this->roles()->where('nombre', $roleName)->exists();
-    }
-
-    public function hasPermission($permisoName)
-    {
-        return $this->roles()->whereHas('permisos', function($query) use ($permisoName) {
-            $query->where('nombre', $permisoName);
-        })->exists();
-    }
+    // ❌ Elimina estos si no vas a usar roles todavía:
+    // public function roles() { ... }
+    // public function hasRole() { ... }
+    // public function hasPermission() { ... }
 }

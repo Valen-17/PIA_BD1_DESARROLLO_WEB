@@ -4,7 +4,7 @@
 <div class="max-w-6xl mx-auto">
     <!-- Hero Section -->
     <div class="bg-gradient-to-r from-indigo-700 to-purple-600 text-white rounded-xl p-8 md:p-12 mb-8 shadow-lg">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Proyectos PA/PIA</h1>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Gestionador de Proyectos</h1>
         <p class="text-xl md:text-2xl opacity-90">Transformando la docencia a través de proyectos innovadores</p>
     </div>
 

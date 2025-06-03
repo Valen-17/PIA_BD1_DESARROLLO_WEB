@@ -17,16 +17,25 @@ class Evaluador extends Model
         'apellidos',
         'email',
         'telefono',
-        'especialidad'
+        'especialidad',
+        'usuario_id'
     ];
 
-    // Relaciones
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class, 'usuario_id');
+    }
+
     public function evaluaciones()
     {
         return $this->hasMany(Evaluacion::class, 'evaluadorId');
     }
 
-    // Accessor para nombre completo
+    public function proyectos()
+    {
+        return $this->belongsToMany(Proyecto::class, 'evaluador_proyecto', 'evaluador_id', 'proyecto_id');
+    }
+
     public function getNombreCompletoAttribute()
     {
         return $this->nombres . ' ' . $this->apellidos;

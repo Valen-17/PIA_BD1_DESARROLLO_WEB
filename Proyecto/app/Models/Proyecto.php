@@ -21,12 +21,22 @@ class Proyecto extends Model
 
     protected $casts = [
         'fechaInicio' => 'datetime',
+        'fechaFin' => 'datetime',
     ];
 
-    protected $dates = [
-        'fechaInicio',
-        'fechaFin'
-    ];
+    public function estadoFormateado()
+    {
+        switch ($this->estado) {
+            case 0:
+                return 'Pendiente';
+            case 1:
+                return 'Aprobado';
+            case 2:
+                return 'Rechazado';
+            default:
+                return 'Desconocido';
+        }
+    }
 
     // Relaciones
     public function tipoProyecto()
@@ -46,24 +56,20 @@ class Proyecto extends Model
         return $this->hasMany(Evaluacion::class, 'proyectoId');
     }
 
+    public function evaluadores()
+    {
+        return $this->belongsToMany(Evaluador::class, 'evaluador_proyecto', 'proyecto_id', 'evaluador_id');
+    }
+
+    public function proyectoAsignaturas()
+    {
+        return $this->hasMany(ProyectoAsignatura::class, 'proyectoId');
+    }
+
     // Scopes
     public function scopeActivos($query)
     {
         return $query->where('fechaFin', '>=', now())->orWhereNull('fechaFin');
-    }
-
-    public function estadoFormateado()
-    {
-        switch ($this->estado) {
-            case 0:
-                return 'Pendiente';
-            case 1:
-                return 'Aprobado';
-            case 2:
-                return 'Rechazado';
-            default:
-                return 'Desconocido';
-        }
     }
 
     public function promedioEvaluacion()

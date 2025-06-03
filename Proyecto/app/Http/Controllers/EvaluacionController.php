@@ -6,6 +6,7 @@ use App\Models\Evaluacion;
 use App\Models\Proyecto;
 use App\Models\Evaluador;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EvaluacionController extends Controller
 {
@@ -117,5 +118,83 @@ class EvaluacionController extends Controller
                             ->get();
 
         return view('evaluaciones.lista', compact('proyectos'));
+    }
+
+    public function indexEvaluador()
+    {
+        $usuario = Auth::user();
+        $evaluador = $usuario->evaluador;
+
+        if (!$evaluador) {
+            abort(403, 'Este usuario no está vinculado a un evaluador.');
+        }
+
+        $proyectos = $evaluador->proyectos()->with('tipoProyecto')->get();
+
+        return view('evaluador.proyectos', compact('proyectos'));
+    }
+
+    public function formularioEvaluacion(Proyecto $proyecto)
+    {
+        $usuario = Auth::user();
+        $evaluador = $usuario->evaluador;
+
+        if (!$evaluador || !$evaluador->proyectos->contains($proyecto)) {
+            abort(403, 'No tienes asignado este proyecto.');
+        }
+
+        // Verificar si ya fue evaluado este proyecto por este evaluador
+        $yaEvaluado = Evaluacion::where('proyectoId', $proyecto->id)
+                                ->where('evaluadorId', $evaluador->id)
+                                ->exists();
+
+        if ($yaEvaluado) {
+            return redirect()->route('evaluador.proyectos')->with('error', 'Ya has evaluado este proyecto.');
+        }
+
+
+        $proyecto->load(['tipoProyecto', 'proyectoAsignaturas.asignatura', 'proyectoAsignaturas.docente']);        
+
+        return view('evaluador.evaluar', compact('proyecto'));
+    }
+
+    public function guardarEvaluacion(Request $request, Proyecto $proyecto)
+    {
+        $usuario = Auth::user();
+        $evaluador = $usuario->evaluador;
+
+        if (!$evaluador || !$evaluador->proyectos->contains($proyecto)) {
+            abort(403, 'No tienes asignado este proyecto.');
+        }
+
+        $request->validate([
+                'contenido' => 'required|integer|min:1|max:10',
+                'problematizacion' => 'required|integer|min:1|max:10',
+                'objetivos' => 'required|integer|min:1|max:10',
+                'metodologia' => 'required|integer|min:1|max:10',
+                'resultados' => 'required|integer|min:1|max:10',
+                'potencial' => 'required|integer|min:1|max:10',
+                'interaccionPublico' => 'required|integer|min:1|max:10',
+                'creatividad' => 'required|integer|min:1|max:10',
+                'innovacion' => 'required|integer|min:1|max:10',
+                'concluciones' => 'nullable|string'
+            ]);
+
+            Evaluacion::create([
+                'proyectoId' => $proyecto->id,
+                'evaluadorId' => $evaluador->id,
+                'contenido' => $request->contenido,
+                'problematizacion' => $request->problematizacion,
+                'objetivos' => $request->objetivos,
+                'metodologia' => $request->metodologia,
+                'resultados' => $request->resultados,
+                'potencial' => $request->potencial,
+                'interaccionPublico' => $request->interaccionPublico,
+                'creatividad' => $request->creatividad,
+                'innovacion' => $request->innovacion,
+                'concluciones' => $request->concluciones,
+            ]);
+
+        return redirect()->route('evaluador.proyectos')->with('success', 'Evaluación guardada correctamente.');
     }
 }

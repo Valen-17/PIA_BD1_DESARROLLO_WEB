@@ -89,4 +89,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/evaluaciones/lista', [EvaluacionController::class, 'lista'])
     ->name('evaluaciones.lista');
+
+    // Vista especial para evaluadores: ver proyectos asignados
+    Route::get('/mis-proyectos', [EvaluacionController::class, 'indexEvaluador'])->name('evaluador.proyectos');
+
+    // Evaluar un proyecto asignado
+    Route::get('/evaluar/{proyecto}', [EvaluacionController::class, 'formularioEvaluacion'])->name('evaluacion.create');
+
+    Route::post('/evaluar/{proyecto}', [EvaluacionController::class, 'guardarEvaluacion'])->name('evaluacion.store');
+
 });

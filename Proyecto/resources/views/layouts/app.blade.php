@@ -15,7 +15,7 @@
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <a href="{{ route('dashboard') }}" class="text-xl font-bold flex items-center">
                 <i class="fas fa-project-diagram mr-2"></i>
-                Proyectos PA/PIA
+                Gestionador de Proyectos
             </a>
             
             <div class="flex items-center space-x-4">

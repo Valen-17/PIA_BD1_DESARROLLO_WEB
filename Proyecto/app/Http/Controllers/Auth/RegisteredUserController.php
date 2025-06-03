@@ -42,6 +42,14 @@ class RegisteredUserController extends Controller
             'activo' => true,            
         ]);
 
+        \App\Models\Evaluador::create([
+            'usuario_id' => $usuario->id,
+            'identificacion' => 'TEMP-' . $usuario->id,
+            'nombres' => $request->username,
+            'apellidos' => 'N/A',
+            'email' => $usuario->email,
+        ]);
+
         event(new Registered($usuario));
 
         Auth::login($usuario);
