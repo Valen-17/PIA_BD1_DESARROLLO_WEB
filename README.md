@@ -14,11 +14,11 @@ Repositorio académico correspondiente a los cursos ET0187 - Bases de Datos 1 y 
   </tr>
   <tr>
     <td><strong>Daniela Montoya Quintero</strong></td>
-    <td><img src="assets/Daniela Montoya.jpg" alt="Daniela Montoya" width="150"/></td>
+    <td><img src="assets/daniela_montoya.jpg" alt="Daniela Montoya" width="150"/></td>
   </tr>
   <tr>
     <td><strong>Valentina Alejandra Pérez Cardona</strong></td>
-    <td><img src="assets/Valentina Perez.jpg" alt="Valentina Pérez" width="150"/></td>
+    <td><img src="assets/valentina_perez.jpg" alt="Valentina Pérez" width="150"/></td>
   </tr>
   <tr>
     <td><strong>Juan Felipe Raigoza Cifuentes</strong></td>
@@ -30,19 +30,19 @@ Repositorio académico correspondiente a los cursos ET0187 - Bases de Datos 1 y 
   </tr>
   <tr>
     <td><strong>Diego Alejandro Mazo Espinal</strong></td>
-    <td><img src="" alt="Diego Mazo" width="150"/></td>
+    <td><img src="assets/diego_mazo.jpg" alt="Diego Mazo" width="150"/></td>
   </tr>
   <tr>
     <td><strong>Breinner Silva Velosa</strong></td>
-    <td><img src="" alt="Breinner Silva" width="150"/></td>
+    <td><img src="assets/breinner_silva.jpg" alt="Breinner Silva" width="150"/></td>
   </tr>
   <tr>
     <td><strong>Javier Isaza Vasquez</strong></td>
-    <td><img src="" alt="Javier Isaza" width="150"/></td>
+    <td><img src="assets/javier_isaza.jpg" alt="Javier Isaza" width="150"/></td>
   </tr>
   <tr>
     <td><strong>Andrés García Aguirre</strong></td>
-    <td><img src="" alt="Andrés García" width="150"/></td>
+    <td><img src="assets/andres_garcia.jpg" alt="Andrés García" width="150"/></td>
   </tr>
 </table>
 
