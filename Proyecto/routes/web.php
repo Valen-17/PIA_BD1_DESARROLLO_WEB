@@ -98,6 +98,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::post('/evaluar/{proyecto}', [EvaluacionController::class, 'guardarEvaluacion'])->name('evaluacion.store');
 
+    Route::get('/evaluaciones/{evaluacion}/editar', [EvaluacionController::class, 'editarEvaluacion'])->name('evaluador.editar');
+
     Route::get('/evaluaciones/{proyecto}/evaluar', [EvaluacionController::class, 'formulario'])
     ->name('evaluacion.formulario');
 

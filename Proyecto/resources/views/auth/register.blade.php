@@ -67,35 +67,7 @@
                                 class="w-full border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 px-4 py-3">
                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-red-600 text-sm" />
                         </div>
-                    </div>
-
-                    <!-- Tipo de Usuario (opcional) -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">
-                            <i class="fas fa-user-tag mr-2 text-indigo-600"></i>Tipo de usuario
-                        </label>
-                        <div class="grid grid-cols-2 gap-4">
-                            <label class="inline-flex items-center">
-                                <input type="radio" name="user_type" value="profesor" 
-                                    class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300">
-                                <span class="ml-2 text-sm text-gray-700">Profesor</span>
-                            </label>
-                            <label class="inline-flex items-center">
-                                <input type="radio" name="user_type" value="estudiante" 
-                                    class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300">
-                                <span class="ml-2 text-sm text-gray-700">Estudiante</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Términos y condiciones -->
-                    <div class="flex items-center">
-                        <input id="terms" name="terms" type="checkbox" required
-                            class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
-                        <label for="terms" class="ml-2 block text-sm text-gray-700">
-                            Acepto los <a href="#" class="text-indigo-600 hover:text-indigo-500">términos y condiciones</a>
-                        </label>
-                    </div>
+                    </div>                    
 
                     <!-- Submit Button -->
                     <div>

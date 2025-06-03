@@ -93,7 +93,7 @@ class EvaluacionController extends Controller
 
         $evaluacion->update($request->all());
 
-        return redirect()->route('evaluaciones.index')
+        return redirect()->route('evaluador.proyectos')
                          ->with('success', 'Evaluación actualizada exitosamente');
     }
 
@@ -143,20 +143,23 @@ class EvaluacionController extends Controller
             abort(403, 'No tienes asignado este proyecto.');
         }
 
-        // Verificar si ya fue evaluado este proyecto por este evaluador
-        $yaEvaluado = Evaluacion::where('proyectoId', $proyecto->id)
-                                ->where('evaluadorId', $evaluador->id)
-                                ->exists();
+        // Cargar relaciones necesarias
+        $proyecto->load(['tipoProyecto', 'proyectoAsignaturas.asignatura', 'proyectoAsignaturas.docente']);
 
-        if ($yaEvaluado) {
-            return redirect()->route('evaluador.proyectos')->with('error', 'Ya has evaluado este proyecto.');
+        // Buscar evaluación existente
+        $evaluacion = Evaluacion::where('proyectoId', $proyecto->id)
+                                ->where('evaluadorId', $evaluador->id)
+                                ->first();
+
+        // Si ya fue evaluado, redirigir a la vista de edición personalizada
+        if ($evaluacion) {
+            return view('evaluador.editar', compact('evaluacion', 'proyecto'));
         }
 
-
-        $proyecto->load(['tipoProyecto', 'proyectoAsignaturas.asignatura', 'proyectoAsignaturas.docente']);        
-
+        // Si no, mostrar formulario normal de evaluación
         return view('evaluador.evaluar', compact('proyecto'));
     }
+
 
     public function guardarEvaluacion(Request $request, Proyecto $proyecto)
     {
@@ -196,5 +199,19 @@ class EvaluacionController extends Controller
             ]);
 
         return redirect()->route('evaluador.proyectos')->with('success', 'Evaluación guardada correctamente.');
+    }
+
+    public function editarEvaluacion(Evaluacion $evaluacion)
+    {
+        $usuario = Auth::user();
+        $evaluador = $usuario->evaluador;
+
+        if (!$evaluador || $evaluacion->evaluadorId !== $evaluador->id) {
+            abort(403, 'No tienes permiso para editar esta evaluación.');
+        }
+
+        $proyecto = $evaluacion->proyecto()->with('tipoProyecto', 'proyectoAsignaturas.asignatura', 'proyectoAsignaturas.docente')->first();
+
+        return view('evaluador.editar', compact('evaluacion', 'proyecto'));
     }
 }

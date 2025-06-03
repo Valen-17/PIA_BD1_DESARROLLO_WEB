@@ -89,14 +89,40 @@ class ProyectoController extends Controller
             'fechaInicio' => 'nullable|date',
             'fechaFin' => 'nullable|date|after_or_equal:fechaInicio',
             'tipoProyectoId' => 'required|exists:tiposProyecto,id',
+            'asignaturas' => 'required|array',
+            'asignaturas.*' => 'exists:asignaturas,id',
+            'docentes' => 'required|array',
+            'docentes.*' => 'exists:docentes,id',
         ]);
 
-        $proyecto->update($request->all());
+        $proyecto->update([
+            'titulo' => $request->titulo,
+            'descripcion' => $request->descripcion,
+            'fechaInicio' => $request->fechaInicio ?? null,
+            'fechaFin' => $request->fechaFin ?? null,
+            'tipoProyectoId' => $request->tipoProyectoId,
+        ]);
+
+        // Eliminar relaciones actuales
+        ProyectoAsignatura::where('proyectoId', $proyecto->id)->delete();
+
+        // Crear nuevas relaciones
+        foreach ($request->asignaturas as $i => $asignaturaId) {
+            ProyectoAsignatura::create([
+                'proyectoId' => $proyecto->id,
+                'asignaturaId' => $asignaturaId,
+                'docenteId' => $request->docentes[$i] ?? null,
+                'grupo' => null,
+                'semestre' => now()->month <= 6 ? 1 : 2,
+                'año' => now()->year
+            ]);
+        }
 
         return redirect()->route('proyectos.index')
-                         ->with('success', 'Proyecto actualizado correctamente');
+                        ->with('success', 'Proyecto actualizado correctamente con asignaturas y docentes.');
     }
 
+    
     public function destroy(Proyecto $proyecto)
     {
         $proyecto->delete();

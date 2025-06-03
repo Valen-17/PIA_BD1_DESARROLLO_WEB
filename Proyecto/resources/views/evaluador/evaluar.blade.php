@@ -10,7 +10,7 @@
             <h1 class="text-2xl font-bold text-gray-800">Evaluar Proyecto</h1>
             <p class="text-gray-600 text-sm mt-1">Formulario de evaluación del proyecto seleccionado</p>
         </div>
-        <a href="{{ route('dashboard') }}"
+        <a href="{{ route('evaluador.proyectos') }}"
            class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition">
             <i class="fas fa-arrow-left mr-2"></i>Volver
         </a>
@@ -31,13 +31,12 @@
                         <p><strong>Título:</strong> {{ $proyecto->titulo }}</p>
                         <p><strong>Tipo:</strong> {{ $proyecto->tipoProyecto->nombre ?? 'N/A' }}</p>
                         <p><strong>Descripción:</strong> {{ $proyecto->descripcion ?? 'Sin descripción' }}</p>
-                        <p><strong>Asignaturas:</strong></p>
+                        <p><strong>Asignaturas - Docente:</strong></p>
                         <ul class="list-disc ml-6">
                             @forelse($proyecto->proyectoAsignaturas as $asignacion)
                                 <li>
-                                    {{ $asignacion->asignatura->nombre ?? 'N/A' }} 
-                                    - {{ $asignacion->docente->nombreCompleto ?? 'Docente' }}
-                                    ({{ $asignacion->grupo ?? '-' }} | Sem: {{ $asignacion->semestre }} - {{ $asignacion->año }})
+                                    {{ $asignacion->asignatura->descripcion ?? 'N/A' }} 
+                                    - {{ $asignacion->docente->nombreCompleto ?? 'N/A' }}                                    
                                 </li>
                             @empty
                                 <li class="text-gray-500">No hay asignaturas registradas.</li>

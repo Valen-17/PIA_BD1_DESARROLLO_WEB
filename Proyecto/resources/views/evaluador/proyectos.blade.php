@@ -67,10 +67,21 @@
 
                             {{-- Acción de evaluar --}}
                             <td class="px-6 py-4 text-center">
-                                <a href="{{ route('evaluacion.formulario', $proyecto->id) }}"
-                                   class="inline-block px-3 py-1 bg-indigo-600 text-white text-xs rounded hover:bg-indigo-700">
-                                    Evaluar
-                                </a>
+                                @php
+                                    $miEvaluacion = $proyecto->evaluaciones->firstWhere('evaluadorId', auth()->user()->evaluador->id ?? null);
+                                @endphp
+
+                                @if($miEvaluacion)
+                                    <a href="{{ route('evaluacion.formulario', $proyecto->id) }}"
+                                    class="inline-block px-3 py-1 bg-yellow-500 text-white text-xs rounded hover:bg-yellow-600">
+                                        Editar Evaluación
+                                    </a>
+                                @else
+                                    <a href="{{ route('evaluacion.formulario', $proyecto->id) }}"
+                                    class="inline-block px-3 py-1 bg-indigo-600 text-white text-xs rounded hover:bg-indigo-700">
+                                        Evaluar
+                                    </a>
+                                @endif                               
                             </td>
                         </tr>
                     @empty

@@ -46,8 +46,8 @@
                 <div class="mb-4">
                     <label for="fechaInicio" class="block text-sm font-medium text-gray-700 mb-1">Fecha de Inicio</label>
                     <input type="date" id="fechaInicio" name="fechaInicio"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                           value="{{ old('fechaInicio', $proyecto->fechaInicio) }}">
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"                           
+                           value="{{ old('fechaInicio', optional($proyecto->fechaInicio)->format('Y-m-d')) }}">
                     @error('fechaInicio')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
@@ -57,7 +57,7 @@
                     <label for="fechaFin" class="block text-sm font-medium text-gray-700 mb-1">Fecha de Fin</label>
                     <input type="date" id="fechaFin" name="fechaFin"
                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                           value="{{ old('fechaFin', $proyecto->fechaFin) }}">
+                           value="{{ old('fechaFin', optional($proyecto->fechaFin)->format('Y-m-d')) }}">
                     @error('fechaFin')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
