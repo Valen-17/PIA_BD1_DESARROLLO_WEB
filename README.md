@@ -66,6 +66,6 @@ Repositorio académico correspondiente a los cursos ET0187 - Bases de Datos 1 y 
   </tr>
   <tr>
     <td><strong>Andres Felipe Gutiérrez Martínez</strong></td>
-    <td><img src="assets/andres_gutierrez.jpg" alt="Andres Gutierrez" width="150"/></td>
+    <td><img src="assets/andres._gutierrez.jpg" alt="Andres Gutierrez" width="150"/></td>
   </tr>
 </table>
