@@ -34,6 +34,12 @@
                             <td class="px-6 py-4 text-sm text-gray-900">{{ $evaluador->telefono }}</td>
                             <td class="px-6 py-4 text-sm text-gray-900">{{ $evaluador->especialidad ?? 'N/A' }}</td>
                             <td class="px-6 py-4 text-sm font-medium">
+                                <a 
+                                    href="{{ route('evaluadores.asignar-proyectos', $evaluador) }}"
+                                    class="inline-block px-3 py-1 bg-blue-500 text-white text-xs rounded hover:bg-blue-600 mr-2">
+                                    Asignar Proyectos
+                                </a>
+
                                 <a href="{{ route('evaluadores.edit', $evaluador) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">
                                     <i class="fas fa-edit"></i>
                                 </a>

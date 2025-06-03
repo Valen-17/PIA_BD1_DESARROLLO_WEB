@@ -69,7 +69,36 @@
                 </div>            
             </div>
 
-            
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Asignaturas y Docentes *</label>
+
+                <div id="asignacionesContainer">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 asignacion-item">
+                        <div>
+                            <label class="block text-xs font-medium text-gray-600 mb-1">Asignatura</label>
+                            <select name="asignaturas[]" class="w-full px-2 py-2 border rounded-md">
+                                @foreach($asignaturas as $asignatura)
+                                    <option value="{{ $asignatura->id }}">{{ $asignatura->descripcion }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-gray-600 mb-1">Docente</label>
+                            <select name="docentes[]" class="w-full px-2 py-2 border rounded-md">
+                                @foreach($docentes as $docente)
+                                    <option value="{{ $docente->id }}">{{ $docente->nombreCompleto }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" id="agregarAsignacion" class="mt-2 px-3 py-1 text-sm bg-green-500 text-white rounded hover:bg-green-600">
+                    + Añadir otra asignatura
+                </button>
+            </div>
+
 
             <div class="flex justify-end mt-6">
                 <a href="{{ route('proyectos.index') }}"
@@ -84,4 +113,15 @@
         </form>
     </div>
 </div>
+
+@push('scripts')
+<script>
+    document.getElementById('agregarAsignacion').addEventListener('click', function () {
+        const container = document.getElementById('asignacionesContainer');
+        const nuevaAsignacion = container.firstElementChild.cloneNode(true);
+        container.appendChild(nuevaAsignacion);
+    });
+</script>
+@endpush
+
 @endsection

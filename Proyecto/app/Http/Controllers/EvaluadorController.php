@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Proyecto;
 use App\Models\Evaluador;
 use Illuminate\Http\Request;
-
 
 class EvaluadorController extends Controller
 {
@@ -51,7 +51,7 @@ class EvaluadorController extends Controller
         return view('evaluadores.show', compact('evaluador'));
     }
 
-        public function edit(Evaluador $evaluador)
+    public function edit(Evaluador $evaluador)
     {
         return view('evaluadores.edit', compact('evaluador'));
     }
@@ -80,5 +80,25 @@ class EvaluadorController extends Controller
         $evaluador->delete();
         return redirect()->route('evaluadores.index')
                          ->with('success', 'Evaluador eliminado correctamente');
+    }
+
+    public function asignarProyectosForm(Evaluador $evaluador)
+    {
+        $proyectos = Proyecto::all();
+        $asignados = $evaluador->proyectos->pluck('id')->toArray();
+
+        return view('evaluadores.asignar-proyectos', compact('evaluador', 'proyectos', 'asignados'));
+    }
+
+    public function guardarAsignacionProyectos(Request $request, Evaluador $evaluador)
+    {
+        $request->validate([
+            'proyectos' => 'array',
+            'proyectos.*' => 'exists:proyectos,id',
+        ]);
+
+        $evaluador->proyectos()->sync($request->proyectos); // reemplaza los actuales
+
+        return redirect()->route('evaluadores.index')->with('success', 'Proyectos asignados correctamente.');
     }
 }

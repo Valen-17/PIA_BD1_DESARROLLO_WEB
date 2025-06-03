@@ -12,7 +12,7 @@
 
     @if(Auth::user()->evaluador)
         <!-- SOLO PARA EVALUADORES -->
-        <a href="{{ route('evaluador.proyectos') }}" class="bento-card bg-gradient-to-br from-indigo-500 to-purple-600">
+        <a href="{{ route('evaluador.proyectos') }}" class="bento-card bg-gradient-to-br from-purple-500 to-pink-500 mb-[1.5rem]">
             <div class="flex items-center justify-between">
                 <div>
                     <h3 class="text-xl font-semibold text-white">Mis Proyectos Asignados</h3>
@@ -157,7 +157,7 @@
         </a>
 
         <!-- Tarjeta instituciones -->
-        <a href="{{ route('departamentos.index') }}" class="bento-card bg-gradient-to-br from-purple-500 to-pink-500">
+        <a href="{{ route('departamentos.index') }}" class="bento-card bg-gradient-to-br from-green-500 to-emerald-500">
             <div class="flex items-center justify-between">
                 <div>
                     <h3 class="text-xl font-semibold text-white">Departamentos</h3>
@@ -189,7 +189,7 @@
         </a>
 
         <!-- Tarjeta instituciones -->
-        <a href="{{ route('programas.index') }}" class="bento-card bg-gradient-to-br from-purple-500 to-pink-500">
+        <a href="{{ route('programas.index') }}" class="bento-card bg-gradient-to-br from-rose-500 to-pink-500">
             <div class="flex items-center justify-between">
                 <div>
                     <h3 class="text-xl font-semibold text-white">Programas</h3>

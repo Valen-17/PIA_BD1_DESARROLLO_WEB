@@ -134,7 +134,7 @@ class EvaluacionController extends Controller
         return view('evaluador.proyectos', compact('proyectos'));
     }
 
-    public function formularioEvaluacion(Proyecto $proyecto)
+    public function formulario(Proyecto $proyecto)
     {
         $usuario = Auth::user();
         $evaluador = $usuario->evaluador;

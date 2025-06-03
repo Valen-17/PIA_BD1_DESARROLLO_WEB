@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Proyecto;
+use App\Models\ProyectoAsignatura;
+use App\Models\Asignatura;
+use App\Models\Docente;
 use App\Models\TipoProyecto;
 use Illuminate\Http\Request;
 
@@ -17,7 +20,10 @@ class ProyectoController extends Controller
     public function create()
     {
         $tiposProyecto = TipoProyecto::all();
-        return view('proyectos.create', compact('tiposProyecto'));
+        $asignaturas = Asignatura::all();
+        $docentes = Docente::all();
+
+        return view('proyectos.create', compact('tiposProyecto', 'asignaturas', 'docentes'));
     }
 
     public function store(Request $request)
@@ -28,30 +34,52 @@ class ProyectoController extends Controller
             'fechaInicio' => 'nullable|date',
             'fechaFin' => 'nullable|date|after_or_equal:fechaInicio',
             'tipoProyectoId' => 'required|exists:tiposProyecto,id',
+            'asignaturas' => 'required|array',
+            'asignaturas.*' => 'exists:asignaturas,id',
+            'docentes' => 'required|array',
+            'docentes.*' => 'exists:docentes,id',
         ]);
 
-        Proyecto::create($request->all());
+        // Creamos el proyecto
+        $proyecto = Proyecto::create($request->only([
+            'titulo',
+            'descripcion',
+            'fechaInicio',
+            'fechaFin',
+            'tipoProyectoId'
+        ]));
+
+        // Guardamos relaciones con asignaturas y docentes
+        $asignaturas = $request->input('asignaturas', []);
+        $docentes = $request->input('docentes', []);
+
+        foreach ($asignaturas as $index => $asignaturaId) {
+            ProyectoAsignatura::create([
+                'proyectoId' => $proyecto->id,
+                'asignaturaId' => $asignaturaId,
+                'docenteId' => $docentes[$index] ?? null,
+                'grupo' => null, // O puedes capturarlo también desde el formulario si lo agregas
+                'semestre' => now()->month <= 6 ? 1 : 2,
+                'año' => now()->year
+            ]);
+        }
 
         return redirect()->route('proyectos.index')
-                         ->with('success', 'Proyecto creado correctamente');
+                        ->with('success', 'Proyecto creado correctamente con asignaturas y docentes.');
     }
 
-    public function show(Proyecto $proyecto)
-    {
-        $proyecto->load([
-            'tipoProyecto',
-            'asignaturas.programa',
-            'evaluaciones.evaluador',
-        ]);
-
-        return view('proyectos.show', compact('proyecto'));
-    }
 
     public function edit(Proyecto $proyecto)
     {
         $tiposProyecto = TipoProyecto::all();
-        return view('proyectos.edit', compact('proyecto', 'tiposProyecto'));
+        $asignaturas = \App\Models\Asignatura::all();
+        $docentes = \App\Models\Docente::all();
+
+        $proyecto->load('proyectoAsignaturas');
+
+        return view('proyectos.edit', compact('proyecto', 'tiposProyecto', 'asignaturas', 'docentes'));
     }
+
 
     public function update(Request $request, Proyecto $proyecto)
     {

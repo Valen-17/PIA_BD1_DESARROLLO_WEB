@@ -80,6 +80,44 @@
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
+
+                <div class="mb-6 md:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Asignaturas y Docentes Asignados</label>
+
+                    <div id="asignacionesContainer">
+                        @foreach($proyecto->proyectoAsignaturas as $asignacion)
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3 asignacion-item">
+                                <div>
+                                    <label class="text-xs text-gray-600 mb-1">Asignatura</label>
+                                    <select name="asignaturas[]" class="w-full border rounded-md px-2 py-1">
+                                        @foreach($asignaturas as $asignatura)
+                                            <option value="{{ $asignatura->id }}"
+                                                {{ $asignacion->asignaturaId == $asignatura->id ? 'selected' : '' }}>
+                                                {{ $asignatura->descripcion }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="text-xs text-gray-600 mb-1">Docente</label>
+                                    <select name="docentes[]" class="w-full border rounded-md px-2 py-1">
+                                        @foreach($docentes as $docente)
+                                            <option value="{{ $docente->id }}"
+                                                {{ $asignacion->docenteId == $docente->id ? 'selected' : '' }}>
+                                                {{ $docente->nombreCompleto }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <button type="button" id="agregarAsignacion"
+                        class="mt-2 px-3 py-1 bg-green-500 text-white text-sm rounded hover:bg-green-600">
+                        + Añadir otra asignatura
+                    </button>
+                </div>
             </div>
 
             <div class="flex justify-end mt-6">
@@ -95,4 +133,15 @@
         </form>
     </div>
 </div>
+
+@push('scripts')
+<script>
+    document.getElementById('agregarAsignacion').addEventListener('click', function () {
+        const container = document.getElementById('asignacionesContainer');
+        const nuevaAsignacion = container.firstElementChild.cloneNode(true);
+        container.appendChild(nuevaAsignacion);
+    });
+</script>
+@endpush
+
 @endsection
