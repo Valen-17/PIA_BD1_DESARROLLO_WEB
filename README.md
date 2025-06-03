@@ -5,16 +5,6 @@ Repositorio académico correspondiente a los cursos ET0187 - Bases de Datos 1 y 
 
 # INTEGRANTES DEL PROYECTO
 
-## Equipo de Bases de Datos
-- Daniela Montoya Quintero  
-- Valentina Alejandra Pérez Cardona  
-- Juan Felipe Raigoza Cifuentes  
-- Juan David Garcia Jimenez  
-- Diego Alejandro Mazo Espinal  
-- Breinner Silva Velosa  
-- Javier Isaza Vasquez  
-- Andrés García Aguirre  
-
 ## 🔧 Equipo de Bases de Datos
 
 <table>
@@ -23,14 +13,39 @@ Repositorio académico correspondiente a los cursos ET0187 - Bases de Datos 1 y 
     <th>Foto</th>
   </tr>
   <tr>
-    <td><strong>Daniela Montoya Quintero  </strong></td>
-    <td><img src="" alt="Daniel Montoya" width="150"/></td>
+    <td><strong>Daniela Montoya Quintero</strong></td>
+    <td><img src="" alt="Daniela Montoya" width="150"/></td>
   </tr>
   <tr>
-    <td><strong>Valentina Alejandra Pérez Cardona </strong></td>
+    <td><strong>Valentina Alejandra Pérez Cardona</strong></td>
     <td><img src="" alt="Valentina Pérez" width="150"/></td>
   </tr>
+  <tr>
+    <td><strong>Juan Felipe Raigoza Cifuentes</strong></td>
+    <td><img src="" alt="Juan Felipe Raigoza" width="150"/></td>
+  </tr>
+  <tr>
+    <td><strong>Juan David Garcia Jimenez</strong></td>
+    <td><img src="" alt="Juan David Garcia" width="150"/></td>
+  </tr>
+  <tr>
+    <td><strong>Diego Alejandro Mazo Espinal</strong></td>
+    <td><img src="" alt="Diego Mazo" width="150"/></td>
+  </tr>
+  <tr>
+    <td><strong>Breinner Silva Velosa</strong></td>
+    <td><img src="" alt="Breinner Silva" width="150"/></td>
+  </tr>
+  <tr>
+    <td><strong>Javier Isaza Vasquez</strong></td>
+    <td><img src="" alt="Javier Isaza" width="150"/></td>
+  </tr>
+  <tr>
+    <td><strong>Andrés García Aguirre</strong></td>
+    <td><img src="" alt="Andrés García" width="150"/></td>
+  </tr>
 </table>
+
 
 ---
 
