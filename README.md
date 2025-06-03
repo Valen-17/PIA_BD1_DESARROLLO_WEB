@@ -15,9 +15,26 @@ Repositorio académico correspondiente a los cursos ET0187 - Bases de Datos 1 y 
 - Javier Isaza Vasquez  
 - Andrés García Aguirre  
 
+## 🔧 Equipo de Bases de Datos
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Foto</th>
+  </tr>
+  <tr>
+    <td><strong>Daniela Montoya Quintero  </strong></td>
+    <td><img src="" alt="Daniel Montoya" width="150"/></td>
+  </tr>
+  <tr>
+    <td><strong>Valentina Alejandra Pérez Cardona </strong></td>
+    <td><img src="" alt="Valentina Pérez" width="150"/></td>
+  </tr>
+</table>
+
 ---
 
-## 🔧 Equipo de Desarrollo (Web)
+## 🔧 Equipo de Desarrollo  Web
 
 <table>
   <tr>
