@@ -66,6 +66,10 @@ Repositorio académico correspondiente a los cursos ET0187 - Bases de Datos 1 y 
   </tr>
   <tr>
     <td><strong>Andres Felipe Gutiérrez Martínez</strong></td>
-    <td><img src="assets/andres._gutierrez.jpg" alt="Andres Gutierrez" width="150"/></td>
+    <td><img src="https://media.licdn.com/dms/image/v2/D4E03AQEWtxWztMmpYQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1701543556576?e=1754524800&v=beta&t=SnSxh5Ym7PP7yJtKpyycoLyU7qQiGEE92VLveRp0mvM" alt="Andres Gutierrez" width="150"/></td>
+  </tr>
+  <tr>
+    <td><strong>Nicolas Cataño Durango</strong></td>
+    <td><img src="assets/nicolas_cataño" alt="Nicolas Cataño" width="150"/></td>
   </tr>
 </table>
