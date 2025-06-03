@@ -14,11 +14,11 @@ Repositorio académico correspondiente a los cursos ET0187 - Bases de Datos 1 y 
   </tr>
   <tr>
     <td><strong>Daniela Montoya Quintero</strong></td>
-    <td><img src="" alt="Daniela Montoya" width="150"/></td>
+    <td><img src="assets/Daniela Montoya.jpg" alt="Daniela Montoya" width="150"/></td>
   </tr>
   <tr>
     <td><strong>Valentina Alejandra Pérez Cardona</strong></td>
-    <td><img src="" alt="Valentina Pérez" width="150"/></td>
+    <td><img src="assets/Valentina Perez.jpg" alt="Valentina Pérez" width="150"/></td>
   </tr>
   <tr>
     <td><strong>Juan Felipe Raigoza Cifuentes</strong></td>
