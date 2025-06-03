@@ -68,7 +68,7 @@ CREATE TABLE taller_transito (
 CREATE TABLE proyecto (
     id_proyecto SERIAL PRIMARY KEY,
     id_tipo INT NOT NULL,
-    titulo VARCHAR(50) NOT NULL,
+    titulo VARCHAR(100) NOT NULL,
     descripcion TEXT NOT NULL,
     fecha_inscripcion DATE NOT NULL,
     FOREIGN KEY (id_tipo) REFERENCES tipo_proyecto(id_tipo_proyecto)
