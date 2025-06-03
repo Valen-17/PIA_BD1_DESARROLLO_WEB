@@ -22,7 +22,7 @@ Repositorio académico correspondiente a los cursos ET0187 - Bases de Datos 1 y 
   </tr>
   <tr>
     <td><strong>Juan Felipe Raigoza Cifuentes</strong></td>
-    <td><img src="" alt="Juan Felipe Raigoza" width="150"/></td>
+    <td><img src="assets/juan_felipe.jpg" alt="Juan Felipe Raigoza" width="150"/></td>
   </tr>
   <tr>
     <td><strong>Juan David Garcia Jimenez</strong></td>
