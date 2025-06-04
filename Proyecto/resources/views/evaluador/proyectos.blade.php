@@ -13,7 +13,7 @@
                     <tr>
                         <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">#</th>
                         <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Título Proyecto</th>
-                        <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Tipo / Asignaturas</th>
+                        <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Asignaturas</th>
                         <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Docente(s)</th>
                         <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Evaluadores</th>
                         <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase"># Evaluaciones</th>

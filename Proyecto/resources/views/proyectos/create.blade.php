@@ -83,13 +83,22 @@
                             </select>
                         </div>
 
-                        <div>
+                        <div class="relative">
                             <label class="block text-xs font-medium text-gray-600 mb-1">Docente</label>
                             <select name="docentes[]" class="w-full px-2 py-2 border rounded-md">
                                 @foreach($docentes as $docente)
                                     <option value="{{ $docente->id }}">{{ $docente->nombreCompleto }}</option>
                                 @endforeach
                             </select>
+
+                            <button type="button"
+                                    class="eliminarAsignacion absolute -top-3 -right-3 bg-red-100 hover:bg-red-200 text-red-600 hover:text-red-700 rounded-full w-6 h-6 flex items-center justify-center shadow"
+                                    title="Eliminar asignación">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 8.586L15.293 3.293a1 1 0 011.414 1.414L11.414 10l5.293 5.293a1 1 0 01-1.414 1.414L10 11.414l-5.293 5.293a1 1 0 01-1.414-1.414L8.586 10 3.293 4.707a1 1 0 011.414-1.414L10 8.586z" clip-rule="evenodd"/>
+                                </svg>
+                        </button>
+
                         </div>
                     </div>
                 </div>
@@ -118,8 +127,26 @@
 <script>
     document.getElementById('agregarAsignacion').addEventListener('click', function () {
         const container = document.getElementById('asignacionesContainer');
-        const nuevaAsignacion = container.firstElementChild.cloneNode(true);
+        const primeraAsignacion = container.querySelector('.asignacion-item');
+        const nuevaAsignacion = primeraAsignacion.cloneNode(true);
+
+        // Limpiar los selects
+        nuevaAsignacion.querySelectorAll('select').forEach(select => select.selectedIndex = 0);
+
         container.appendChild(nuevaAsignacion);
+    });
+
+    // Delegación de eventos para eliminar filas
+    document.getElementById('asignacionesContainer').addEventListener('click', function (e) {
+        if (e.target.classList.contains('eliminarAsignacion')) {
+            const asignacion = e.target.closest('.asignacion-item');
+            const total = document.querySelectorAll('.asignacion-item').length;
+            if (total > 1) {
+                asignacion.remove();
+            } else {
+                alert('Debe haber al menos una asignación.');
+            }
+        }
     });
 </script>
 @endpush
