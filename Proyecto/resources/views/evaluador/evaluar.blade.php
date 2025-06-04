@@ -74,7 +74,7 @@
                                     <select name="{{ $campo }}" id="{{ $campo }}"
                                             class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
                                         <option value="">Sin calificar</option>
-                                        @for($i = 1; $i <= 10; $i++)
+                                        @for($i = 1; $i <= 5; $i++)
                                             <option value="{{ $i }}" {{ old($campo) == $i ? 'selected' : '' }}>
                                                 {{ $i }}
                                             </option>
